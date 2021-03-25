@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" userLabel="Main" customClass="ViewController" customModule="TourHandicap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZV-v1-MbM" userLabel="Mental">
+                                <rect key="frame" x="80" y="348" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="tertiaryLabelColor"/>
+                                <state key="normal" title="Button" image="mental"/>
+                                <connections>
+                                    <action selector="handicapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J6z-p9-00i"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9F-r2-0vS" userLabel="Auditif">
+                                <rect key="frame" x="80" y="348" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="tertiaryLabelColor"/>
+                                <state key="normal" title="Button" image="auditif"/>
+                                <connections>
+                                    <action selector="handicapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vxw-xQ-l02"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCb-gq-BRT" userLabel="Visuel">
+                                <rect key="frame" x="80" y="348" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="tertiaryLabelColor"/>
+                                <state key="normal" title="Button" image="visuel"/>
+                                <connections>
+                                    <action selector="handicapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xLq-Xc-nQJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TourHandicap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="We0-9Y-bks">
+                                <rect key="frame" x="88" y="54" width="238.5" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHE-0l-SIr">
+                                <rect key="frame" x="47" y="139" width="320" height="216"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlb-Eh-2aI">
+                                <rect key="frame" x="161" y="818" width="92" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Favoris"/>
+                                <connections>
+                                    <segue destination="kw1-ac-rCI" kind="show" identifier="favoris" id="XXv-5f-jBY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qzy-re-frw">
+                                <rect key="frame" x="132.5" y="649" width="149" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Rechercher"/>
+                                <connections>
+                                    <segue destination="J0n-gB-CnU" kind="show" identifier="recherche" id="NyL-tV-ihh"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sZJ-ef-7Ui">
+                                <rect key="frame" x="79" y="363" width="256" height="328"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ScS-Vf-YLB">
+                                        <rect key="frame" x="1" y="0.0" width="254" height="200"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zP3-LE-FS2" userLabel="Moteur">
+                                                <rect key="frame" x="0.0" y="0.0" width="254" height="200"/>
+                                                <color key="tintColor" systemColor="tertiaryLabelColor"/>
+                                                <state key="normal" title="Button" image="moteur"/>
+                                                <connections>
+                                                    <action selector="handicapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BrQ-bW-JLq"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WG0-Cf-cy2">
+                                        <rect key="frame" x="0.0" y="200" width="256" height="128"/>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="We0-9Y-bks" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ab4-qG-xLg"/>
+                            <constraint firstItem="sZJ-ef-7Ui" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DHq-lm-gH2"/>
+                            <constraint firstItem="cHE-0l-SIr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Exy-ct-vsF"/>
+                            <constraint firstItem="We0-9Y-bks" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Ipy-dn-W4s"/>
+                            <constraint firstAttribute="bottom" secondItem="qlb-Eh-2aI" secondAttribute="bottom" constant="30" id="Rpo-jA-SuM"/>
+                            <constraint firstItem="Qzy-re-frw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YjD-I5-BHY"/>
+                            <constraint firstItem="qlb-Eh-2aI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="igF-Cr-zDc"/>
+                            <constraint firstItem="cHE-0l-SIr" firstAttribute="top" secondItem="We0-9Y-bks" secondAttribute="bottom" constant="37" id="q8I-kI-sVV" userLabel="Departement Selector.top = TourHandicap.bottom + 40"/>
+                            <constraint firstItem="Qzy-re-frw" firstAttribute="top" secondItem="sZJ-ef-7Ui" secondAttribute="bottom" constant="30" id="rLD-Gt-ACM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="DepartementSelector" destination="cHE-0l-SIr" id="ymH-Vi-lfJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1800.0000000000002" y="-490.17857142857139"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="RkZ-Pv-gAH">
+            <objects>
+                <viewController id="hQw-10-jkU" userLabel="Detail" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nSP-rJ-awe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="YBX-u1-myr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tgM-JF-kSW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-81" y="-451"/>
+        </scene>
+        <!--Favoris-->
+        <scene sceneID="cDt-x4-vAv">
+            <objects>
+                <viewController id="kw1-ac-rCI" userLabel="Favoris" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KzI-Aj-080">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="xhD-3w-Lm0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pDz-IN-JIU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wzT-U0-BkD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1001" y="-984"/>
+        </scene>
+        <!--Recherche-->
+        <scene sceneID="Hd0-2p-Tfr">
+            <objects>
+                <viewController id="J0n-gB-CnU" userLabel="Recherche" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OE5-V8-M7O">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="NJb-yf-0Ox"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kng-Fs-qXh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fQI-IM-VDs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1001" y="-13"/>
+        </scene>
+        <!--PageWeb-->
+        <scene sceneID="oHF-x1-lDN">
+            <objects>
+                <viewController id="4gr-bw-ApQ" userLabel="PageWeb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TKW-PN-DA5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S6C-Fe-DZx">
+                                <rect key="frame" x="102" y="276" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PYb-Ba-DLp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t6o-0t-zt3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="707" y="-451"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="auditif" width="200" height="200"/>
+        <image name="mental" width="200" height="200"/>
+        <image name="moteur" width="200" height="200"/>
+        <image name="visuel" width="200" height="200"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
