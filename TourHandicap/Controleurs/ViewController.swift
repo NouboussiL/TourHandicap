@@ -7,27 +7,40 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class ViewController: UIViewController{
         
-    var listHandicap = [String]()
+    var listHandicap : [String] = []
     
-    var listDepartements = ["SEINE-ET-MARNE", "PARIS", "ESSONNE, YEVELINES", "VAL-DE-MARNE", "VAL-D'OISE", "HAUTS-DE-SEINE", "SEINE-SAINT-DENIS"]
+    var listDepartements = ["SEINE-ET-MARNE", "PARIS", "ESSONNE, YEVELINES", "VAL-DE-MARNE", "VAL-D\'OISE", "HAUTS-DE-SEINE", "SEINE-SAINT-DENIS"]
     
-    var departement = ""
+    var departement = "SEINE-ET-MARNE"
     
     @IBOutlet weak var DepartementSelector: UIPickerView!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if(segue.identifier == "recherche"){
+            let destination = segue.destination as! RechercheViewController
+            //destination.delegate = self
+            destination.departementRecherche = self.departement
+            destination.listHandicapRecherche = self.listHandicap
+        }
+        if(segue.identifier == "favoris"){
+            
+        }
+    
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        DepartementSelector.delegate = self
-        DepartementSelector.dataSource = self
+        //DepartementSelector.delegate = self
+        //DepartementSelector.dataSource = self
+    
     }
-
+    
+    
+    // MARK: - Fonction d'ajout de handicap
+    
     @IBAction func handicapPressed(_ sender: UIButton) {
         
         switch(sender.tag){
@@ -71,12 +84,16 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         default:
             break
         }
-        
-        //Test
-        for x in listHandicap{
-            print(x)
-        }
     }
+    
+    
+    
+}
+
+
+// MARK : - Definition PickerView
+extension ViewController :UIPickerViewDataSource, UIPickerViewDelegate{
+
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -93,5 +110,4 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         departement = listDepartements[row]
     }
-    
 }

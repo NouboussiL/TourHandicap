@@ -7,5 +7,6 @@ target 'TourHandicap' do
 
   # Pods for TourHandicap
 	pod 'Alamofire', '~> 4.8.2'
+	pod 'SwiftyJSON', '~> 4.0'
 
 end

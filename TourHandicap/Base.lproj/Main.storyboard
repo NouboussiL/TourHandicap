@@ -16,33 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZV-v1-MbM" userLabel="Mental">
-                                <rect key="frame" x="80" y="348" width="128" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="tertiaryLabelColor"/>
-                                <state key="normal" title="Button" image="mental"/>
-                                <connections>
-                                    <action selector="handicapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J6z-p9-00i"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9F-r2-0vS" userLabel="Auditif">
-                                <rect key="frame" x="80" y="348" width="128" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="tertiaryLabelColor"/>
-                                <state key="normal" title="Button" image="auditif"/>
-                                <connections>
-                                    <action selector="handicapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vxw-xQ-l02"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCb-gq-BRT" userLabel="Visuel">
-                                <rect key="frame" x="80" y="348" width="128" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="tertiaryLabelColor"/>
-                                <state key="normal" title="Button" image="visuel"/>
-                                <connections>
-                                    <action selector="handicapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xLq-Xc-nQJ"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TourHandicap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="We0-9Y-bks">
                                 <rect key="frame" x="88" y="54" width="238.5" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
@@ -51,6 +24,10 @@
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHE-0l-SIr">
                                 <rect key="frame" x="47" y="139" width="320" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="NHT-fB-NIU"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="IZm-pF-0Pv"/>
+                                </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlb-Eh-2aI">
                                 <rect key="frame" x="161" y="818" width="92" height="48"/>
@@ -60,7 +37,7 @@
                                     <segue destination="kw1-ac-rCI" kind="show" identifier="favoris" id="XXv-5f-jBY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qzy-re-frw">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qzy-re-frw">
                                 <rect key="frame" x="132.5" y="649" width="149" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Rechercher"/>
@@ -68,24 +45,54 @@
                                     <segue destination="J0n-gB-CnU" kind="show" identifier="recherche" id="NyL-tV-ihh"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sZJ-ef-7Ui">
-                                <rect key="frame" x="79" y="363" width="256" height="328"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="uIt-YM-pVf">
+                                <rect key="frame" x="78.5" y="319.5" width="257" height="257"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ScS-Vf-YLB">
-                                        <rect key="frame" x="1" y="0.0" width="254" height="200"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="ids-Y0-qhl">
+                                        <rect key="frame" x="0.0" y="0.0" width="257" height="128"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zP3-LE-FS2" userLabel="Moteur">
-                                                <rect key="frame" x="0.0" y="0.0" width="254" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" systemColor="tertiaryLabelColor"/>
-                                                <state key="normal" title="Button" image="moteur"/>
+                                                <state key="normal" image="moteur"/>
                                                 <connections>
                                                     <action selector="handicapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BrQ-bW-JLq"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZV-v1-MbM" userLabel="Mental">
+                                                <rect key="frame" x="129" y="0.0" width="128" height="128"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" systemColor="tertiaryLabelColor"/>
+                                                <state key="normal" image="mental"/>
+                                                <connections>
+                                                    <action selector="handicapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J6z-p9-00i"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WG0-Cf-cy2">
-                                        <rect key="frame" x="0.0" y="200" width="256" height="128"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="iOo-0w-VkZ">
+                                        <rect key="frame" x="0.0" y="129" width="257" height="128"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9F-r2-0vS" userLabel="Auditif">
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" systemColor="tertiaryLabelColor"/>
+                                                <state key="normal" image="auditif"/>
+                                                <connections>
+                                                    <action selector="handicapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vxw-xQ-l02"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCb-gq-BRT" userLabel="Visuel">
+                                                <rect key="frame" x="129" y="0.0" width="128" height="128"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" systemColor="tertiaryLabelColor"/>
+                                                <state key="normal" image="visuel"/>
+                                                <connections>
+                                                    <action selector="handicapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xLq-Xc-nQJ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -94,14 +101,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="We0-9Y-bks" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ab4-qG-xLg"/>
-                            <constraint firstItem="sZJ-ef-7Ui" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DHq-lm-gH2"/>
                             <constraint firstItem="cHE-0l-SIr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Exy-ct-vsF"/>
                             <constraint firstItem="We0-9Y-bks" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Ipy-dn-W4s"/>
+                            <constraint firstItem="qlb-Eh-2aI" firstAttribute="top" secondItem="Qzy-re-frw" secondAttribute="bottom" constant="121" id="K4v-cO-1nt"/>
                             <constraint firstAttribute="bottom" secondItem="qlb-Eh-2aI" secondAttribute="bottom" constant="30" id="Rpo-jA-SuM"/>
                             <constraint firstItem="Qzy-re-frw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YjD-I5-BHY"/>
                             <constraint firstItem="qlb-Eh-2aI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="igF-Cr-zDc"/>
+                            <constraint firstItem="uIt-YM-pVf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pAp-JF-4EH"/>
                             <constraint firstItem="cHE-0l-SIr" firstAttribute="top" secondItem="We0-9Y-bks" secondAttribute="bottom" constant="37" id="q8I-kI-sVV" userLabel="Departement Selector.top = TourHandicap.bottom + 40"/>
-                            <constraint firstItem="Qzy-re-frw" firstAttribute="top" secondItem="sZJ-ef-7Ui" secondAttribute="bottom" constant="30" id="rLD-Gt-ACM"/>
+                            <constraint firstItem="uIt-YM-pVf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rJD-ko-Z9g"/>
                         </constraints>
                     </view>
                     <connections>
@@ -146,7 +154,7 @@
         <!--Recherche-->
         <scene sceneID="Hd0-2p-Tfr">
             <objects>
-                <viewController id="J0n-gB-CnU" userLabel="Recherche" sceneMemberID="viewController">
+                <viewController id="J0n-gB-CnU" userLabel="Recherche" customClass="RechercheViewController" customModule="TourHandicap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OE5-V8-M7O">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -187,10 +195,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="auditif" width="200" height="200"/>
-        <image name="mental" width="200" height="200"/>
-        <image name="moteur" width="200" height="200"/>
-        <image name="visuel" width="200" height="200"/>
+        <image name="auditif" width="128" height="128"/>
+        <image name="mental" width="128" height="128"/>
+        <image name="moteur" width="128" height="128"/>
+        <image name="visuel" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
