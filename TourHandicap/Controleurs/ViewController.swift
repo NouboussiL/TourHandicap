@@ -21,7 +21,6 @@ class ViewController: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "recherche"){
             let destination = segue.destination as! RechercheViewController
-            //destination.delegate = self
             destination.departementRecherche = self.departement
             destination.listHandicapRecherche = self.listHandicap
         }
@@ -34,8 +33,6 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        //DepartementSelector.delegate = self
-        //DepartementSelector.dataSource = self
         
     
     }

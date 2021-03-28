@@ -7,12 +7,12 @@
 import UIKit
 import Foundation
 
-class RechercheViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RechercheViewController: UIViewController {
     
     @IBOutlet weak var tableViewEtablissements: UITableView!
     var departementRecherche : String = ""
     var listHandicapRecherche = [String]()
-    var urlAPI = "https://data.iledefrance.fr/api/records/1.0/search/?dataset=cartographie_des_etablissements_tourisme_handicap&q=&rows=13"
+    var urlAPI = "https://data.iledefrance.fr/api/records/1.0/search/?dataset=cartographie_des_etablissements_tourisme_handicap&q=&rows=10"
     
     var listEtablissements : ListEtablissment?
     
@@ -23,7 +23,7 @@ class RechercheViewController: UIViewController, UITableViewDelegate, UITableVie
         for x in listHandicapRecherche{
             texteURL += "&refine.handicap_\(x)=Oui"
         }
-        print(texteURL)
+        //print(texteURL)
         let urlEncode = texteURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         guard urlEncode != nil else {debugPrint("Problème d'encodage de l'URL: \(texteURL)"); return }
 
@@ -43,22 +43,8 @@ class RechercheViewController: UIViewController, UITableViewDelegate, UITableVie
                 let decoder = JSONDecoder()
                 if let etablissements = try? decoder.decode(ListEtablissment.self, from: data){
                     DispatchQueue.main.async{
-                        //self.listEtablissements = ListEtablissment(records: etablissements.records)
-//                        for x in etablissements.records{
-//                            self.listEtablissements?.records.append(x)
-//                        }
-                        //self.listEtablissements = etablissements
-                        //print(self.listEtablissements!)
-                        //self.updateTable()
-                        
-                        //self.tableViewEtablissements.insertSections(IndexSet(0...self.listEtablissements!.records.count-1), with: .automatic)
+
                         self.listEtablissements = etablissements
-//                        for i in 0...etablissements.records.count-1 {
-//                            self.tableViewEtablissements.beginUpdates()
-//                            self.listEtablissements!.records.append(etablissements.records[i])
-//                            self.tableViewEtablissements.insertRows(at: [IndexPath.init(row: etablissements.records.count-1, section: 0)], with: .automatic)
-//                            self.tableViewEtablissements.endUpdates()
-//                        }
                         self.tableViewEtablissements.reloadData()
                         
                     }
@@ -73,42 +59,48 @@ class RechercheViewController: UIViewController, UITableViewDelegate, UITableVie
         
         
 
-//        print("Après sorti de tache")
-//        print(listEtablissements!)
         tableViewEtablissements.delegate = self
         tableViewEtablissements.dataSource = self
-        tableViewEtablissements.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        //tableViewEtablissements.register(EtablissementCell.self, forCellReuseIdentifier: "cell")
 
     }
     
-    func updateTable () {
-        self.tableViewEtablissements.beginUpdates()
-        //self.tableViewEtablissements.insertSections(IndexSet(0...self.listEtablissements!.records.count-1), with: .automatic)
-        for i in 0...self.listEtablissements!.records.count-1 {
-            
-            self.tableViewEtablissements.insertRows(at: [IndexPath.init(row: i, section: 0)], with: .automatic)
-        }
-        self.tableViewEtablissements.endUpdates()
-    }
+}
     
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-    
+
+
+// MARK : - TableViewDelegate _ TableViewDataSource
+extension RechercheViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listEtablissements?.records.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        if(listEtablissements != nil){
-            cell.textLabel?.text = listEtablissements!.records[indexPath.row].fields.etablissement
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EtablissementCell
+        //print(listEtablissements!)
+        
+        let etab = listEtablissements!.records[indexPath.row].fields
+        
+        cell.etablissement? = listEtablissements!.records[indexPath.row]
+        cell.nomEtablissement?.text = etab.etablissement
+        cell.ville?.text = etab.ville
+        if(etab.handicap_moteur == "Non"){
+            cell.moteur?.isEnabled = false
         }
+        if(etab.handicap_mental == "Non"){
+            cell.mental?.isEnabled = false
+        }
+        if(etab.handicap_auditif == "Non"){
+            cell.auditif?.isEnabled = false
+        }
+        if(etab.handicap_visuel == "Non"){
+            cell.visuel?.isEnabled = false
+        }
+    
+        print()
+        print(cell.nomEtablissement ?? "pas de nom")
         return cell
     }
-    
 
-    
 }
-
 
