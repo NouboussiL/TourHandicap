@@ -15,10 +15,6 @@ struct ListEtablissment : Codable{
     init(){
         records = []
     }
-    
-    init(records: [Etablissement]){
-        self.records = records
-    }
 
 }
 
@@ -34,12 +30,12 @@ struct Fields : Codable {
     
     let departement : String
     let ville : String
-    let activit : String
+    let activit : String?
     let siteweb : String?
     let handicap_visuel : String
     let region : String
     let etablissement : String
-    let adresse : String
+    let adresse : String?
     let telephone : String
     let handicap_auditif : String
     let handicap_moteur : String

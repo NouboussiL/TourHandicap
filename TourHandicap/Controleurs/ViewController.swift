@@ -15,6 +15,7 @@ class ViewController: UIViewController{
     
     var departement = "SEINE-ET-MARNE"
     
+    
     @IBOutlet weak var DepartementSelector: UIPickerView!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -35,6 +36,7 @@ class ViewController: UIViewController{
         // Do any additional setup after loading the view.
         //DepartementSelector.delegate = self
         //DepartementSelector.dataSource = self
+        
     
     }
     
@@ -87,6 +89,10 @@ class ViewController: UIViewController{
     }
     
     
+    @IBAction func lancerRecherche(_ sender: UIButton) {
+        
+        self.performSegue(withIdentifier: "recherche", sender: self)
+    }
     
 }
 
