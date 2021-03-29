@@ -11,10 +11,12 @@ class EtablissementCell: UITableViewCell {
 
     @IBOutlet weak var nomEtablissement: UILabel!
     @IBOutlet weak var ville: UILabel!
-    @IBOutlet weak var moteur: UIButton!
-    @IBOutlet weak var mental: UIButton!
-    @IBOutlet weak var auditif: UIButton!
-    @IBOutlet weak var visuel: UIButton!
+    
+    @IBOutlet weak var moteur: UIImageView!
+    @IBOutlet weak var mental: UIImageView!
+    @IBOutlet weak var auditif: UIImageView!
+    @IBOutlet weak var visuel: UIImageView!
+    
     
     var etablissement : Etablissement?
     
@@ -22,10 +24,18 @@ class EtablissementCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        moteur.isUserInteractionEnabled = false
-        mental.isUserInteractionEnabled = false
-        auditif.isUserInteractionEnabled = false
-        visuel.isUserInteractionEnabled = false
+        if(etablissement?.fields.handicap_moteur == "Non"){
+            moteur.alpha = 0.2
+        }
+        if(etablissement?.fields.handicap_mental == "Non"){
+            mental.alpha = 0.2
+        }
+        if(etablissement?.fields.handicap_auditif == "Non"){
+            auditif.alpha = 0.2
+        }
+        if(etablissement?.fields.handicap_visuel == "Non"){
+            visuel.alpha = 0.2
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

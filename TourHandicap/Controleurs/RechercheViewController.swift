@@ -12,7 +12,8 @@ class RechercheViewController: UIViewController {
     @IBOutlet weak var tableViewEtablissements: UITableView!
     var departementRecherche : String = ""
     var listHandicapRecherche = [String]()
-    var urlAPI = "https://data.iledefrance.fr/api/records/1.0/search/?dataset=cartographie_des_etablissements_tourisme_handicap&q=&rows=10"
+    var etablissementSelectionne : Etablissement?
+    var urlAPI = "https://data.iledefrance.fr/api/records/1.0/search/?dataset=cartographie_des_etablissements_tourisme_handicap&q=&rows=162"
     
     var listEtablissements : ListEtablissment?
     
@@ -23,7 +24,7 @@ class RechercheViewController: UIViewController {
         for x in listHandicapRecherche{
             texteURL += "&refine.handicap_\(x)=Oui"
         }
-        //print(texteURL)
+        print(texteURL)
         let urlEncode = texteURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         guard urlEncode != nil else {debugPrint("Problème d'encodage de l'URL: \(texteURL)"); return }
 
@@ -41,15 +42,17 @@ class RechercheViewController: UIViewController {
             }
             if let data = data{
                 let decoder = JSONDecoder()
-                if let etablissements = try? decoder.decode(ListEtablissment.self, from: data){
+                do{
+                    let etablissements = try decoder.decode(ListEtablissment.self, from: data)
                     DispatchQueue.main.async{
 
                         self.listEtablissements = etablissements
                         self.tableViewEtablissements.reloadData()
                         
                     }
-                }else{
-                    print("Problème lors du décodage des données JSON : \(String(describing: error))")
+
+                }catch(let error){
+                    print(error)
                 }
 
             }
@@ -64,6 +67,16 @@ class RechercheViewController: UIViewController {
         //tableViewEtablissements.register(EtablissementCell.self, forCellReuseIdentifier: "cell")
 
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "detail"){
+            let destination = segue.destination as! DetailViewController
+            destination.etablissement = etablissementSelectionne!
+        }
+
+    
+    }
+
     
 }
     
@@ -81,25 +94,32 @@ extension RechercheViewController: UITableViewDelegate, UITableViewDataSource{
         
         let etab = listEtablissements!.records[indexPath.row].fields
         
-        cell.etablissement? = listEtablissements!.records[indexPath.row]
+        cell.etablissement = listEtablissements!.records[indexPath.row]
         cell.nomEtablissement?.text = etab.etablissement
         cell.ville?.text = etab.ville
-        if(etab.handicap_moteur == "Non"){
-            cell.moteur?.isEnabled = false
+        if(cell.etablissement!.fields.handicap_moteur == "Non"){
+            cell.moteur?.alpha = 0.2
         }
         if(etab.handicap_mental == "Non"){
-            cell.mental?.isEnabled = false
+            cell.mental?.alpha = 0.2
         }
         if(etab.handicap_auditif == "Non"){
-            cell.auditif?.isEnabled = false
+            cell.auditif?.alpha = 0.2
         }
         if(etab.handicap_visuel == "Non"){
-            cell.visuel?.isEnabled = false
+            cell.visuel?.alpha = 0.2
         }
-    
-        print()
-        print(cell.nomEtablissement ?? "pas de nom")
+//        print(listEtablissements!.records[indexPath.row])
+//        print(cell.etablissement ?? "pas dans cell")
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentCell = tableView.cellForRow(at: indexPath) as! EtablissementCell
+        etablissementSelectionne = currentCell.etablissement!
+//        print(currentCell.etablissement ?? "rien")
+        currentCell.isSelected = false
+        performSegue(withIdentifier: "detail", sender: self)
     }
 
 }

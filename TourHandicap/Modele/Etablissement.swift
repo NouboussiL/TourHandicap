@@ -22,7 +22,7 @@ struct Etablissement : Codable {
 
     let recordid : String
     let fields : Fields
-    let geometry : Geometry
+    let geometry : Geometry?
     
 }
 
@@ -41,6 +41,7 @@ struct Fields : Codable {
     let handicap_moteur : String
     let codepostal : Int
     let handicap_mental : String
+    let geo : [Double]?
 
 }
 struct Geometry : Codable{
