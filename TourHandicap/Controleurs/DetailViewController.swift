@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import Foundation
 
 class DetailViewController: UIViewController {
     
@@ -21,6 +22,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var auditif: UIImageView!
     @IBOutlet weak var visuel: UIImageView!
     
+    @IBOutlet weak var imageFavoris: UIImageView!
+    
     @IBOutlet weak var telephone: UILabel!
     @IBOutlet weak var adresse: UILabel!
     
@@ -28,10 +31,19 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var map: MKMapView!
     
+    var favoris : ListEtablissment?
+    
     var url : String?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let defaults = UserDefaults.standard
+        favoris = defaults.getObject(dataType: ListEtablissment.self, key: "favoris") ?? ListEtablissment()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         // Do any additional setup after loading the view.
         //print(etablissement ?? "Rien")
@@ -88,7 +100,50 @@ class DetailViewController: UIViewController {
         }else{
             map.isHidden = true
         }
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        imageFavoris.isUserInteractionEnabled = true
+        imageFavoris.addGestureRecognizer(tapGestureRecognizer)
+        
+        let defaults = UserDefaults.standard
+        favoris = defaults.getObject(dataType: ListEtablissment.self, key: "favoris") ?? ListEtablissment()
+        print(favoris!)
+        for x in favoris!.records{
+            if x.recordid == etablissement!.recordid{
+                imageFavoris.image = UIImage(systemName: "heart.fill")
+            }
+        }
 
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer){
+        print("On a cliqué sur l'image")
+        if(favoris!.records.count == 0){
+            imageFavoris.image = UIImage(systemName: "heart.fill")
+            favoris!.records.append(etablissement!)
+        }else{
+            var trouve = false
+            var indice = 0
+            for i in 0...favoris!.records.count-1{
+                if favoris!.records[i].recordid == etablissement?.recordid{
+                    trouve = true
+                    indice = i
+                    break
+                }
+            }
+            if trouve{
+                imageFavoris.image = UIImage(systemName: "heart")
+                favoris!.records.remove(at: indice)
+                UserDefaults.standard.synchronize()
+            }else{
+                imageFavoris.image = UIImage(systemName: "heart.fill")
+                favoris!.records.append(etablissement!)
+            }
+        }
+
+        UserDefaults.standard.saveObject(favoris!, forkey: "favoris")
+        //defaults.set(favoris, forKey: "favoris")
+        print(favoris!)
     }
     
 
@@ -109,6 +164,16 @@ class DetailViewController: UIViewController {
 
 }
 
-extension DetailViewController: MKMapViewDelegate {
+extension UserDefaults {
+    func saveObject<T: Codable>(_ data: T?, forkey defaultName: String){
+        let encoded = try? JSONEncoder().encode(data)
+        set(encoded, forKey: defaultName)
+    }
     
+    func getObject<T: Codable>(dataType: T.Type, key: String) -> T?{
+        guard let userdefaultData = data(forKey: key)else{
+            return nil
+        }
+        return try? JSONDecoder().decode(T.self, from: userdefaultData)
+    }
 }

@@ -10,16 +10,27 @@ import UIKit
 class FavorisViewController: UIViewController {
 
     @IBOutlet weak var tableViewEtablissements: UITableView!
-    var etablissements : [String: Etablissement]?
     var listEtablissements : ListEtablissment?
     var etablissementSelectionne : Etablissement?
+    
+    override func loadView() {
+        super.loadView()
+        let nib = UINib(nibName: "EtablissementCell", bundle: nil)
+        tableViewEtablissements.register(nib, forCellReuseIdentifier: "celluleCustom")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let nib = UINib(nibName: "EtablissementCell", bundle: nil)
-        tableViewEtablissements.register(nib, forCellReuseIdentifier: "celluleCustom")
+        
+        tableViewEtablissements.delegate = self
+        tableViewEtablissements.dataSource = self
+        
+        let defaults = UserDefaults.standard
+        listEtablissements = defaults.getObject(dataType: ListEtablissment.self, key: "favoris") ?? ListEtablissment()
+        tableViewEtablissements.reloadData()
+        print(listEtablissements!)
     }
     
 
@@ -33,11 +44,22 @@ class FavorisViewController: UIViewController {
         }
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let defaults = UserDefaults.standard
+        listEtablissements = defaults.getObject(dataType: ListEtablissment.self, key: "favoris") ?? ListEtablissment()
+        tableViewEtablissements.reloadData()
+    }
 
 }
+
+
 extension FavorisViewController: UITableViewDelegate, UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        etablissements?.count ?? 0
+        print("Liste avec éléments \(String(listEtablissements?.records.count ?? 0))")
+        return listEtablissements?.records.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,3 +100,5 @@ extension FavorisViewController: UITableViewDelegate, UITableViewDataSource{
     
     
 }
+
+

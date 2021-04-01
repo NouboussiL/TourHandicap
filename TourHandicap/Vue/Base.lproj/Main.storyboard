@@ -257,6 +257,7 @@
                         <outlet property="adresse" destination="Vbk-NJ-Thd" id="sVp-1I-vdC"/>
                         <outlet property="auditif" destination="abf-J8-wut" id="u03-iW-U2u"/>
                         <outlet property="departement" destination="bYG-7C-ojK" id="XbX-or-yEF"/>
+                        <outlet property="imageFavoris" destination="C3e-5N-Sq0" id="Kkf-8W-Kmn"/>
                         <outlet property="map" destination="5IL-4f-05s" id="suB-zy-8Fb"/>
                         <outlet property="mental" destination="WKE-e3-1la" id="dyv-oB-g8w"/>
                         <outlet property="moteur" destination="FLh-cv-2m3" id="pFN-ie-JS0"/>
@@ -301,7 +302,7 @@
                         <barButtonItem key="backBarButtonItem" title="Retour" id="ymn-vl-TdY"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableViewEtablissements" destination="nOZ-mu-4bY" id="bm3-QS-whd"/>
+                        <outlet property="tableViewEtablissements" destination="nOZ-mu-4bY" id="8R3-XM-tZt"/>
                         <segue destination="hQw-10-jkU" kind="show" identifier="detail" id="ypc-kv-G9e"/>
                     </connections>
                 </viewController>
@@ -393,7 +394,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="XXv-5f-jBY"/>
-        <segue reference="9Bj-Lm-ob3"/>
+        <segue reference="ypc-kv-G9e"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="auditif" width="128" height="128"/>
