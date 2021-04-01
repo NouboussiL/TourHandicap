@@ -35,18 +35,10 @@ class DetailViewController: UIViewController {
     
     var url : String?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let defaults = UserDefaults.standard
-        favoris = defaults.getObject(dataType: ListEtablissment.self, key: "favoris") ?? ListEtablissment()
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-
-        // Do any additional setup after loading the view.
-        //print(etablissement ?? "Rien")
         
         if(etablissement != nil){
 
@@ -81,6 +73,7 @@ class DetailViewController: UIViewController {
 
         }
         
+        // MARK: - Définition de la map
         if(etablissement?.geometry != nil){
             let latitude:CLLocationDegrees = (etablissement?.geometry?.coordinates[1])!
             let longitude:CLLocationDegrees = (etablissement?.geometry?.coordinates[0])!
@@ -101,10 +94,14 @@ class DetailViewController: UIViewController {
             map.isHidden = true
         }
         
+        //MARK: - Ajout de la fonction de l'image
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         imageFavoris.isUserInteractionEnabled = true
         imageFavoris.addGestureRecognizer(tapGestureRecognizer)
         
+        
+        
+        //MARK: - Chargement des données favoris
         let defaults = UserDefaults.standard
         favoris = defaults.getObject(dataType: ListEtablissment.self, key: "favoris") ?? ListEtablissment()
         print(favoris!)
@@ -116,6 +113,7 @@ class DetailViewController: UIViewController {
 
     }
     
+    //MARK: - Fonction de l'image
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer){
         print("On a cliqué sur l'image")
         if(favoris!.records.count == 0){
@@ -147,9 +145,8 @@ class DetailViewController: UIViewController {
     }
     
 
-    @IBAction func siteWeb(_ sender: Any) {
-        performSegue(withIdentifier: "siteweb", sender: self)
-    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -161,9 +158,14 @@ class DetailViewController: UIViewController {
             destination.url = url
         }
     }
+    @IBAction func siteWeb(_ sender: Any) {
+        performSegue(withIdentifier: "siteweb", sender: self)
+    }
 
 }
 
+
+//MARK: - Ajout de fonctionnalités UserDefaults
 extension UserDefaults {
     func saveObject<T: Codable>(_ data: T?, forkey defaultName: String){
         let encoded = try? JSONEncoder().encode(data)

@@ -13,6 +13,7 @@ class FavorisViewController: UIViewController {
     var listEtablissements : ListEtablissment?
     var etablissementSelectionne : Etablissement?
     
+    //MARK: - Ajout de la cellule custom
     override func loadView() {
         super.loadView()
         let nib = UINib(nibName: "EtablissementCell", bundle: nil)
@@ -21,12 +22,12 @@ class FavorisViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
+       
         tableViewEtablissements.delegate = self
         tableViewEtablissements.dataSource = self
         
+        
+        //MARK: - Récupération des données de favoris
         let defaults = UserDefaults.standard
         listEtablissements = defaults.getObject(dataType: ListEtablissment.self, key: "favoris") ?? ListEtablissment()
         tableViewEtablissements.reloadData()
@@ -45,6 +46,7 @@ class FavorisViewController: UIViewController {
     }
     
     
+    // MARK: - Recharger les données quand la vue doit s'afficher
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let defaults = UserDefaults.standard
@@ -55,6 +57,8 @@ class FavorisViewController: UIViewController {
 }
 
 
+
+// MARK: - Extension pour la TableView
 extension FavorisViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -90,6 +94,7 @@ extension FavorisViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+    // MARK: - Choix de la cellule
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentCell = tableView.cellForRow(at: indexPath) as! EtablissementCell
         etablissementSelectionne = currentCell.etablissement!

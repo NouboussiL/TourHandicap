@@ -169,22 +169,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vbk-NJ-Thd">
-                                <rect key="frame" x="20" y="328" width="374" height="114"/>
+                                <rect key="frame" x="20" y="373" width="374" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5IL-4f-05s">
-                                <rect key="frame" x="20" y="476" width="374" height="306"/>
+                                <rect key="frame" x="20" y="431" width="374" height="396"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftY-6K-nak">
-                                <rect key="frame" x="161" y="814" width="92" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Favoris"/>
-                                <connections>
-                                    <segue destination="kw1-ac-rCI" kind="show" identifier="favorisfromDetail" id="U0a-9K-TS0"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWw-sV-Quo">
                                 <rect key="frame" x="177.5" y="312" width="59" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -205,7 +197,6 @@
                         <viewLayoutGuide key="safeArea" id="YBX-u1-myr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ftY-6K-nak" firstAttribute="bottom" secondItem="YBX-u1-myr" secondAttribute="bottom" id="1eh-k9-oun"/>
                             <constraint firstItem="K66-I9-gdq" firstAttribute="centerY" secondItem="nSP-rJ-awe" secondAttribute="centerY" constant="-145" id="3D8-no-RDs"/>
                             <constraint firstItem="bYG-7C-ojK" firstAttribute="centerY" secondItem="nSP-rJ-awe" secondAttribute="centerY" constant="-293" id="3Fa-0s-mib"/>
                             <constraint firstItem="5IL-4f-05s" firstAttribute="centerY" secondItem="nSP-rJ-awe" secondAttribute="centerY" constant="181" id="3Fa-db-lWV"/>
@@ -224,10 +215,10 @@
                             <constraint firstItem="QWw-sV-Quo" firstAttribute="top" secondItem="K66-I9-gdq" secondAttribute="bottom" constant="-3" id="JXm-kq-9Aa"/>
                             <constraint firstItem="YBX-u1-myr" firstAttribute="trailing" secondItem="XVe-ry-P8j" secondAttribute="trailing" id="Jf6-Sn-DGE"/>
                             <constraint firstItem="YBX-u1-myr" firstAttribute="bottom" secondItem="WKE-e3-1la" secondAttribute="bottom" constant="561" id="KcE-Pv-eEH"/>
-                            <constraint firstItem="ftY-6K-nak" firstAttribute="centerX" secondItem="nSP-rJ-awe" secondAttribute="centerX" id="MEu-Ia-gZx"/>
                             <constraint firstItem="WKE-e3-1la" firstAttribute="centerY" secondItem="nSP-rJ-awe" secondAttribute="centerY" constant="-199" id="NIF-zS-nAX"/>
                             <constraint firstItem="YBX-u1-myr" firstAttribute="bottom" secondItem="FLh-cv-2m3" secondAttribute="bottom" constant="561" id="NLg-zS-o7g"/>
                             <constraint firstItem="fY3-xM-MtR" firstAttribute="centerX" secondItem="nSP-rJ-awe" secondAttribute="centerX" constant="83" id="NTi-8y-cKb"/>
+                            <constraint firstItem="YBX-u1-myr" firstAttribute="bottom" secondItem="5IL-4f-05s" secondAttribute="bottom" constant="35" id="ODD-DS-3C3"/>
                             <constraint firstItem="abf-J8-wut" firstAttribute="centerY" secondItem="nSP-rJ-awe" secondAttribute="centerY" constant="-199" id="U56-3O-jud"/>
                             <constraint firstItem="FLh-cv-2m3" firstAttribute="centerY" secondItem="nSP-rJ-awe" secondAttribute="centerY" constant="-199" id="V8Q-ef-PS4"/>
                             <constraint firstItem="YBX-u1-myr" firstAttribute="trailing" secondItem="Vbk-NJ-Thd" secondAttribute="trailing" constant="20" id="WP7-Sg-yeP"/>
@@ -237,7 +228,6 @@
                             <constraint firstItem="NKg-1t-aif" firstAttribute="trailing" secondItem="YBX-u1-myr" secondAttribute="trailing" id="aUP-Tv-Xdp"/>
                             <constraint firstItem="QWw-sV-Quo" firstAttribute="centerX" secondItem="nSP-rJ-awe" secondAttribute="centerX" id="bAV-Ie-vJa"/>
                             <constraint firstItem="WKE-e3-1la" firstAttribute="centerX" secondItem="nSP-rJ-awe" secondAttribute="centerX" constant="-33" id="ciU-JY-114"/>
-                            <constraint firstItem="ftY-6K-nak" firstAttribute="top" secondItem="5IL-4f-05s" secondAttribute="bottom" constant="32" id="d5r-Da-y5k"/>
                             <constraint firstItem="fY3-xM-MtR" firstAttribute="centerY" secondItem="nSP-rJ-awe" secondAttribute="centerY" constant="-199" id="dlX-7u-Njo"/>
                             <constraint firstItem="YBX-u1-myr" firstAttribute="trailing" secondItem="K66-I9-gdq" secondAttribute="trailing" constant="20" id="fXS-Hv-8oj"/>
                             <constraint firstItem="C3e-5N-Sq0" firstAttribute="top" secondItem="YBX-u1-myr" secondAttribute="top" constant="116" id="hJg-vD-LDo"/>

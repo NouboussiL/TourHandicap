@@ -14,7 +14,6 @@
 		E291B74B26147D1E00DE5D14 /* EtablissementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E291B74A26147D1E00DE5D14 /* EtablissementCell.xib */; };
 		E2A4CE6F260F1C44001F7BDA /* RechercheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A4CE6E260F1C44001F7BDA /* RechercheViewController.swift */; };
 		E2A4CE74260F2522001F7BDA /* Etablissement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A4CE73260F2522001F7BDA /* Etablissement.swift */; };
-		E2A4CE77260F4102001F7BDA /* MyObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A4CE76260F4102001F7BDA /* MyObjects.swift */; };
 		E2A72C682611EDCE00078CD0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A72C672611EDCE00078CD0 /* DetailViewController.swift */; };
 		E2C41B2C260CC7720086CAB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C41B2B260CC7720086CAB8 /* AppDelegate.swift */; };
 		E2C41B2E260CC7720086CAB8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C41B2D260CC7720086CAB8 /* SceneDelegate.swift */; };
@@ -35,7 +34,6 @@
 		E291B74A26147D1E00DE5D14 /* EtablissementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EtablissementCell.xib; sourceTree = "<group>"; };
 		E2A4CE6E260F1C44001F7BDA /* RechercheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechercheViewController.swift; sourceTree = "<group>"; };
 		E2A4CE73260F2522001F7BDA /* Etablissement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Etablissement.swift; sourceTree = "<group>"; };
-		E2A4CE76260F4102001F7BDA /* MyObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyObjects.swift; sourceTree = "<group>"; };
 		E2A72C672611EDCE00078CD0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E2C41B28260CC7720086CAB8 /* TourHandicap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TourHandicap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C41B2B260CC7720086CAB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				E2A4CE73260F2522001F7BDA /* Etablissement.swift */,
-				E2A4CE76260F4102001F7BDA /* MyObjects.swift */,
 			);
 			path = Modele;
 			sourceTree = "<group>";
@@ -262,7 +259,6 @@
 				E2A4CE74260F2522001F7BDA /* Etablissement.swift in Sources */,
 				E2C41B30260CC7720086CAB8 /* ViewController.swift in Sources */,
 				E28A7F5E26108DDB0045B13D /* EtablissementCell.swift in Sources */,
-				E2A4CE77260F4102001F7BDA /* MyObjects.swift in Sources */,
 				E2C41B2C260CC7720086CAB8 /* AppDelegate.swift in Sources */,
 				E2C41B2E260CC7720086CAB8 /* SceneDelegate.swift in Sources */,
 				E2C41B36260CC7720086CAB8 /* TourHandicap.xcdatamodeld in Sources */,

@@ -30,6 +30,7 @@ class RechercheViewController: UIViewController {
 
         let url = URL(string: urlEncode!)
         
+        // MARK: - Definition de la tache de recherche
         let task = URLSession.shared.dataTask(with: url!){(data, response, error) in
             if let error = error{
                 print("Error with fetching films: \(error)")
@@ -66,11 +67,14 @@ class RechercheViewController: UIViewController {
         tableViewEtablissements.dataSource = self
         self.navigationItem.backBarButtonItem?.title = "Retour"
         self.navigationItem.title = "Etablissements \(departementRecherche)"
+        //Register cellule custom
         let nib = UINib(nibName: "EtablissementCell", bundle: nil)
         tableViewEtablissements.register(nib, forCellReuseIdentifier: "celluleCustom")
 
     }
     
+    
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "detail"){
             let destination = segue.destination as! DetailViewController

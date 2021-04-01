@@ -19,31 +19,36 @@ class ViewController: UIViewController{
     
     @IBOutlet weak var DepartementSelector: UIPickerView!
     
+    
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "recherche"){
             let destination = segue.destination as! RechercheViewController
             destination.departementRecherche = self.departement
             destination.listHandicapRecherche = self.listHandicap
         }
-        if(segue.identifier == "favoris"){
-            
-        }
     
+    }
+    
+    @IBAction func lancerRecherche(_ sender: UIButton) {
+        
+        self.performSegue(withIdentifier: "recherche", sender: self)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        UserDefaults.resetStandardUserDefaults()
-        let domain = Bundle.main.bundleIdentifier!
-        UserDefaults.standard.removePersistentDomain(forName: domain)
+        
+        // MARK: - Deboggage de UserDefaults (remise à zéro)
+//        UserDefaults.resetStandardUserDefaults()
+//        let domain = Bundle.main.bundleIdentifier!
+//        UserDefaults.standard.removePersistentDomain(forName: domain)
         
     
     }
     
     
-    // MARK: - Fonction d'ajout de handicap
-    
+    // MARK: - Fonction de gestion de l'apparence des boutons
     @IBAction func handicapPressed(_ sender: UIButton) {
         
         switch(sender.tag){
@@ -90,15 +95,12 @@ class ViewController: UIViewController{
     }
     
     
-    @IBAction func lancerRecherche(_ sender: UIButton) {
-        
-        self.performSegue(withIdentifier: "recherche", sender: self)
-    }
+    
     
 }
 
 
-// MARK : - Definition PickerView
+// MARK: - Extension pour le PickerView
 extension ViewController :UIPickerViewDataSource, UIPickerViewDelegate{
 
     

@@ -22,6 +22,7 @@ class EtablissementCell: UITableViewCell {
     var recordid : String?
     
     
+    //MARK: - Remettre les alpahs à zero avant de créer une autre cellule
     override func prepareForReuse() {
         super.prepareForReuse()
         
