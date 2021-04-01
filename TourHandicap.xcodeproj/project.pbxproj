@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		30BAFA1DC952034A717A64A4 /* Pods_TourHandicap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466CAB12291848CC4700D587 /* Pods_TourHandicap.framework */; };
 		E28A7F5E26108DDB0045B13D /* EtablissementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28A7F5D26108DDB0045B13D /* EtablissementCell.swift */; };
+		E28B2E91261497D7003D11C7 /* FavorisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28B2E90261497D7003D11C7 /* FavorisViewController.swift */; };
+		E28B2E942614A1ED003D11C7 /* SiteWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28B2E932614A1ED003D11C7 /* SiteWebViewController.swift */; };
+		E291B74B26147D1E00DE5D14 /* EtablissementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E291B74A26147D1E00DE5D14 /* EtablissementCell.xib */; };
 		E2A4CE6F260F1C44001F7BDA /* RechercheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A4CE6E260F1C44001F7BDA /* RechercheViewController.swift */; };
 		E2A4CE74260F2522001F7BDA /* Etablissement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A4CE73260F2522001F7BDA /* Etablissement.swift */; };
 		E2A4CE77260F4102001F7BDA /* MyObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A4CE76260F4102001F7BDA /* MyObjects.swift */; };
@@ -27,6 +30,9 @@
 		466CAB12291848CC4700D587 /* Pods_TourHandicap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TourHandicap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9434D401F50F79FA0DAD5BEB /* Pods-TourHandicap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TourHandicap.debug.xcconfig"; path = "Target Support Files/Pods-TourHandicap/Pods-TourHandicap.debug.xcconfig"; sourceTree = "<group>"; };
 		E28A7F5D26108DDB0045B13D /* EtablissementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtablissementCell.swift; sourceTree = "<group>"; };
+		E28B2E90261497D7003D11C7 /* FavorisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorisViewController.swift; sourceTree = "<group>"; };
+		E28B2E932614A1ED003D11C7 /* SiteWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteWebViewController.swift; sourceTree = "<group>"; };
+		E291B74A26147D1E00DE5D14 /* EtablissementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EtablissementCell.xib; sourceTree = "<group>"; };
 		E2A4CE6E260F1C44001F7BDA /* RechercheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RechercheViewController.swift; sourceTree = "<group>"; };
 		E2A4CE73260F2522001F7BDA /* Etablissement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Etablissement.swift; sourceTree = "<group>"; };
 		E2A4CE76260F4102001F7BDA /* MyObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyObjects.swift; sourceTree = "<group>"; };
@@ -76,6 +82,7 @@
 			children = (
 				E2C41B31260CC7720086CAB8 /* Main.storyboard */,
 				E28A7F5D26108DDB0045B13D /* EtablissementCell.swift */,
+				E291B74A26147D1E00DE5D14 /* EtablissementCell.xib */,
 			);
 			path = Vue;
 			sourceTree = "<group>";
@@ -86,6 +93,8 @@
 				E2A4CE6E260F1C44001F7BDA /* RechercheViewController.swift */,
 				E2C41B2F260CC7720086CAB8 /* ViewController.swift */,
 				E2A72C672611EDCE00078CD0 /* DetailViewController.swift */,
+				E28B2E90261497D7003D11C7 /* FavorisViewController.swift */,
+				E28B2E932614A1ED003D11C7 /* SiteWebViewController.swift */,
 			);
 			path = Controleurs;
 			sourceTree = "<group>";
@@ -194,6 +203,7 @@
 			files = (
 				E2C41B3B260CC7740086CAB8 /* LaunchScreen.storyboard in Resources */,
 				E2C41B38260CC7740086CAB8 /* Assets.xcassets in Resources */,
+				E291B74B26147D1E00DE5D14 /* EtablissementCell.xib in Resources */,
 				E2C41B33260CC7720086CAB8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2A72C682611EDCE00078CD0 /* DetailViewController.swift in Sources */,
+				E28B2E91261497D7003D11C7 /* FavorisViewController.swift in Sources */,
 				E2A4CE74260F2522001F7BDA /* Etablissement.swift in Sources */,
 				E2C41B30260CC7720086CAB8 /* ViewController.swift in Sources */,
 				E28A7F5E26108DDB0045B13D /* EtablissementCell.swift in Sources */,
@@ -255,6 +266,7 @@
 				E2C41B2C260CC7720086CAB8 /* AppDelegate.swift in Sources */,
 				E2C41B2E260CC7720086CAB8 /* SceneDelegate.swift in Sources */,
 				E2C41B36260CC7720086CAB8 /* TourHandicap.xcdatamodeld in Sources */,
+				E28B2E942614A1ED003D11C7 /* SiteWebViewController.swift in Sources */,
 				E2A4CE6F260F1C44001F7BDA /* RechercheViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

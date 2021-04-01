@@ -19,23 +19,25 @@ class EtablissementCell: UITableViewCell {
     
     
     var etablissement : Etablissement?
+    var recordid : String?
+    
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        moteur.alpha = 1.0
+              
+        mental.alpha = 1.0
+               
+        auditif.alpha = 1.0
+               
+        visuel.alpha = 1.0
+        
+    }
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        if(etablissement?.fields.handicap_moteur == "Non"){
-            moteur.alpha = 0.2
-        }
-        if(etablissement?.fields.handicap_mental == "Non"){
-            mental.alpha = 0.2
-        }
-        if(etablissement?.fields.handicap_auditif == "Non"){
-            auditif.alpha = 0.2
-        }
-        if(etablissement?.fields.handicap_visuel == "Non"){
-            visuel.alpha = 0.2
-        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -24,7 +24,7 @@ class RechercheViewController: UIViewController {
         for x in listHandicapRecherche{
             texteURL += "&refine.handicap_\(x)=Oui"
         }
-        print(texteURL)
+        //print(texteURL)
         let urlEncode = texteURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         guard urlEncode != nil else {debugPrint("Problème d'encodage de l'URL: \(texteURL)"); return }
 
@@ -64,7 +64,10 @@ class RechercheViewController: UIViewController {
 
         tableViewEtablissements.delegate = self
         tableViewEtablissements.dataSource = self
-        //tableViewEtablissements.register(EtablissementCell.self, forCellReuseIdentifier: "cell")
+        self.navigationItem.backBarButtonItem?.title = "Retour"
+        self.navigationItem.title = "Etablissements \(departementRecherche)"
+        let nib = UINib(nibName: "EtablissementCell", bundle: nil)
+        tableViewEtablissements.register(nib, forCellReuseIdentifier: "celluleCustom")
 
     }
     
@@ -89,7 +92,7 @@ extension RechercheViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EtablissementCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "celluleCustom", for: indexPath) as! EtablissementCell
         //print(listEtablissements!)
         
         let etab = listEtablissements!.records[indexPath.row].fields
@@ -97,16 +100,18 @@ extension RechercheViewController: UITableViewDelegate, UITableViewDataSource{
         cell.etablissement = listEtablissements!.records[indexPath.row]
         cell.nomEtablissement?.text = etab.etablissement
         cell.ville?.text = etab.ville
+        cell.recordid = listEtablissements!.records[indexPath.row].recordid
+
         if(cell.etablissement!.fields.handicap_moteur == "Non"){
             cell.moteur?.alpha = 0.2
         }
-        if(etab.handicap_mental == "Non"){
+        if(cell.etablissement!.fields.handicap_mental == "Non"){
             cell.mental?.alpha = 0.2
         }
-        if(etab.handicap_auditif == "Non"){
+        if(cell.etablissement!.fields.handicap_auditif == "Non"){
             cell.auditif?.alpha = 0.2
         }
-        if(etab.handicap_visuel == "Non"){
+        if(cell.etablissement!.fields.handicap_visuel == "Non"){
             cell.visuel?.alpha = 0.2
         }
 //        print(listEtablissements!.records[indexPath.row])

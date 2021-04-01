@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class DetailViewController: UIViewController {
     
@@ -25,13 +26,18 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var siteweb: UIButton!
     
+    @IBOutlet weak var map: MKMapView!
+    
+    var url : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print(etablissement ?? "Rien")
+        //print(etablissement ?? "Rien")
         
         if(etablissement != nil){
+
             if(etablissement?.fields.handicap_moteur == "Non"){
                 moteur.alpha = 0.2
             }
@@ -57,23 +63,52 @@ class DetailViewController: UIViewController {
             }else{
                 adresse.text = ""
             }
-
+            url = "\(etablissement?.fields.siteweb ?? "")"
             siteweb.setTitle("\(etablissement?.fields.siteweb ?? "")", for: UIControl.State.normal) 
+            self.navigationItem.title = "\(etablissement!.fields.etablissement)"
 
-
+        }
+        
+        if(etablissement?.geometry != nil){
+            let latitude:CLLocationDegrees = (etablissement?.geometry?.coordinates[1])!
+            let longitude:CLLocationDegrees = (etablissement?.geometry?.coordinates[0])!
+            let latDelta:CLLocationDegrees = 0.01
+            let longDelta:CLLocationDegrees = 0.01
+            
+            let span:MKCoordinateSpan = MKCoordinateSpan.init(latitudeDelta : latDelta, longitudeDelta : longDelta)
+            let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+            let region:MKCoordinateRegion = MKCoordinateRegion.init(center: location, span: span)
+            map.setRegion(region, animated: true)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location
+            annotation.title = "\(etablissement?.fields.etablissement ?? "")"
+            map.addAnnotation(annotation)
+            
+        }else{
+            map.isHidden = true
         }
 
     }
     
 
-    /*
+    @IBAction func siteWeb(_ sender: Any) {
+        performSegue(withIdentifier: "siteweb", sender: self)
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if(segue.identifier == "siteweb"){
+            let destination = segue.destination as! SiteWebViewController
+            destination.url = url
+        }
     }
-    */
 
+}
+
+extension DetailViewController: MKMapViewDelegate {
+    
 }
