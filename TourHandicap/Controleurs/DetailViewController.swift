@@ -63,12 +63,16 @@ class DetailViewController: UIViewController {
                 let rue = etablissement!.fields.adresse!
                 let codepostal = etablissement!.fields.codepostal
                 
-                adresse.text = "\(rue)\n\(ville.text ?? "")\n\(codepostal)"
+                adresse.text = "\(rue)\n\(etablissement!.fields.ville)\n\(codepostal)"
             }else{
                 adresse.text = ""
             }
-            url = "\(etablissement?.fields.siteweb ?? "")"
-            siteweb.setTitle("\(etablissement?.fields.siteweb ?? "")", for: UIControl.State.normal) 
+            if etablissement?.fields.siteweb != nil{
+                url = "\(etablissement?.fields.siteweb ?? "")"
+                siteweb.setTitle("\(etablissement?.fields.siteweb ?? "")", for: UIControl.State.normal)
+            }else{
+                siteweb.isHidden = true
+            }
             self.navigationItem.title = "\(etablissement!.fields.etablissement)"
 
         }

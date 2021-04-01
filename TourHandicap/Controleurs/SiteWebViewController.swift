@@ -24,6 +24,7 @@ class SiteWebViewController: UIViewController, WKNavigationDelegate {
             //webview.loadHTMLString("pageweb", baseURL: myURL)
             webview.load(urlRequest)
         }
+        self.navigationItem.title = "\(url!)"
     }
     
     override func loadView() {
