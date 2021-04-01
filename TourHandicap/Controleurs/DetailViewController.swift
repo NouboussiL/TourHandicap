@@ -104,7 +104,7 @@ class DetailViewController: UIViewController {
         //MARK: - Chargement des données favoris
         let defaults = UserDefaults.standard
         favoris = defaults.getObject(dataType: ListEtablissment.self, key: "favoris") ?? ListEtablissment()
-        print(favoris!)
+        
         for x in favoris!.records{
             if x.recordid == etablissement!.recordid{
                 imageFavoris.image = UIImage(systemName: "heart.fill")
@@ -115,7 +115,7 @@ class DetailViewController: UIViewController {
     
     //MARK: - Fonction de l'image
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer){
-        print("On a cliqué sur l'image")
+        
         if(favoris!.records.count == 0){
             imageFavoris.image = UIImage(systemName: "heart.fill")
             favoris!.records.append(etablissement!)
@@ -140,8 +140,6 @@ class DetailViewController: UIViewController {
         }
 
         UserDefaults.standard.saveObject(favoris!, forkey: "favoris")
-        //defaults.set(favoris, forKey: "favoris")
-        print(favoris!)
     }
     
 

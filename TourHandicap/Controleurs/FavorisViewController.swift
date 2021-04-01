@@ -31,7 +31,6 @@ class FavorisViewController: UIViewController {
         let defaults = UserDefaults.standard
         listEtablissements = defaults.getObject(dataType: ListEtablissment.self, key: "favoris") ?? ListEtablissment()
         tableViewEtablissements.reloadData()
-        print(listEtablissements!)
     }
     
 
@@ -62,20 +61,17 @@ class FavorisViewController: UIViewController {
 extension FavorisViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Liste avec éléments \(String(listEtablissements?.records.count ?? 0))")
         return listEtablissements?.records.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "celluleCustom", for: indexPath) as! EtablissementCell
-        //print(listEtablissements!)
         
         let etab = listEtablissements!.records[indexPath.row].fields
         
         cell.etablissement = listEtablissements!.records[indexPath.row]
         cell.nomEtablissement?.text = etab.etablissement
         cell.ville?.text = etab.ville
-        cell.recordid = listEtablissements!.records[indexPath.row].recordid
 
         if(cell.etablissement!.fields.handicap_moteur == "Non"){
             cell.moteur?.alpha = 0.2
@@ -89,8 +85,7 @@ extension FavorisViewController: UITableViewDelegate, UITableViewDataSource{
         if(cell.etablissement!.fields.handicap_visuel == "Non"){
             cell.visuel?.alpha = 0.2
         }
-//        print(listEtablissements!.records[indexPath.row])
-//        print(cell.etablissement ?? "pas dans cell")
+
         return cell
     }
     
@@ -98,7 +93,6 @@ extension FavorisViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentCell = tableView.cellForRow(at: indexPath) as! EtablissementCell
         etablissementSelectionne = currentCell.etablissement!
-//        print(currentCell.etablissement ?? "rien")
         currentCell.isSelected = false
         performSegue(withIdentifier: "detail", sender: self)
     }

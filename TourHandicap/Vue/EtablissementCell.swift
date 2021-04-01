@@ -19,7 +19,6 @@ class EtablissementCell: UITableViewCell {
     
     
     var etablissement : Etablissement?
-    var recordid : String?
     
     
     //MARK: - Remettre les alpahs à zero avant de créer une autre cellule
