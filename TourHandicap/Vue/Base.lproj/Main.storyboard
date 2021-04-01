@@ -49,6 +49,11 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" systemColor="tertiaryLabelColor"/>
                                                 <state key="normal" image="moteur"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="handicapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BrQ-bW-JLq"/>
                                                 </connections>
@@ -58,6 +63,11 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" systemColor="tertiaryLabelColor"/>
                                                 <state key="normal" image="mental"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="handicapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J6z-p9-00i"/>
                                                 </connections>
@@ -72,6 +82,11 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" systemColor="tertiaryLabelColor"/>
                                                 <state key="normal" image="auditif"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="handicapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vxw-xQ-l02"/>
                                                 </connections>
@@ -81,6 +96,11 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" systemColor="tertiaryLabelColor"/>
                                                 <state key="normal" image="visuel"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="handicapPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xLq-Xc-nQJ"/>
                                                 </connections>
@@ -381,7 +401,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Jaj-SN-YU9"/>
+        <segue reference="XXv-5f-jBY"/>
         <segue reference="ypc-kv-G9e"/>
     </inferredMetricsTieBreakers>
     <resources>
